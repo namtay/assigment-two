@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import NavbarSearch from "./NavbarSearch";
 import axios from "axios";
+import "./MainWeather.css";
 function Mainweather() {
     const [search,setSearch]= useState("");  
     const[searchResults,setSearchResults]=useState({
@@ -8,12 +9,17 @@ function Mainweather() {
         region:"",
         country:"",
         description:"",
-        // iconUrl:"",
+        iconUrl:"",
         temperature:"",
-        dateTime:""
+        dateTime:"",
+        id:""
     })
    const [updated,setUpdated]=useState(false);
    const [history,setHistory]=useState([]);
+   const [historyUpdated,setHistoryUpdated]=useState(false);
+//    const listItems= history.map((item,index)=>   
+//         <span key={index}>{item.cityName}</span>)
+   
 
 
 
@@ -24,9 +30,11 @@ function Mainweather() {
     }       
     const handleClick=(e)=>{
         e.preventDefault();
+        setHistoryUpdated(false);
         if(search){
             axios.get(`http://api.weatherapi.com/v1/current.json?key=063a2ee47c3f4638a78215543202511&q=${search}`)
             .then((res)=>{
+                console.log(res.data);
                  setSearchResults({
                      cityName: res.data.location.name,
                      region:res.data.location.region,
@@ -35,6 +43,7 @@ function Mainweather() {
                      iconUrl:res.data.current.condition.icon,
                      temperature:res.data.current.temp_c,
                      dateTime: res.data.location.localtime,
+                     id:res.data.current.last_updated_epoch
                      
                  }              
                  );           
@@ -55,15 +64,14 @@ function Mainweather() {
                     console.log(newHistory);
                     setUpdated(false);
                     array.push(newHistory);
-                    setHistory(array);           
-                                       
-                    
-                }        
-         
-         
-     }         
-
-    
+                    setHistory(array);
+                    setHistoryUpdated(true);           
+                              
+                  
+                }     
+                
+     }    
+ 
 
     return (
         <div>
@@ -87,32 +95,54 @@ function Mainweather() {
                             <div className="col-sm-8 mx-auto">
                             <div className="card text-black" id="displaySearch">
                             <div className="card-body">
-                               
+                                <div className="row row-content">
+                                    <img  className="col-sm-4 mx-auto" style={{"width":100+"px"}} src={searchResults.iconUrl} alt=""/>
+                                </div>
                                 <div className="row">
-                                        <div className="col-sm-4 align-self-center">
-                                            <p>{searchResults.cityName}</p>
+                                        <div className="col-sm-4 align-self-center" >  <p className=" city"> {searchResults.cityName}</p>
                                         </div>
                                         <div className="col-sm-4 align-self-center">                       
-                                        
+                                         
                                         <p>{searchResults.description}</p>                          
                                         
                                         </div>
                                         <div className="col-sm-4 align-self-center">
-                                            <p>{searchResults.temperature}</p>
+                                            <p className="temperature">{searchResults.temperature}&deg;C</p>
                                         </div>
                                 </div>
                                 <div className="row ">
-                                    <p className="col-sm-4 ml-auto">{searchResults.dateTime}</p>
+                                    <p className="col-sm-4 ml-auto date">{searchResults.dateTime}</p>
                                 </div>                
                                                                     
                                 
                             </div>
                     </div>
 
-                     {displayHistory() 
-                                       
-                    }
-                     <div>{history}</div>
+
+                     <div className="row rowcontent">
+                      
+                        <div className="col-sm-6">
+                        </div>
+                        <div className="col-sm-6">
+                                  <h2>History</h2>
+                       
+                       
+                        
+                        
+                        {displayHistory()} 
+                        {history}
+                         
+                        {historyUpdated?
+                            history.map((d, idx)=>
+                            <li key={idx}>{d.cityName}</li>)
+                        :null
+                        }
+                        
+                       
+                    
+                        </div>
+                       
+                     </div>
                 </div>
                 </div>
              </div>
@@ -134,6 +164,4 @@ export default Mainweather
 
 
 
- // <div className="row row-content">
-// <img  className="col-sm-4 mx-auto" style={{"width":100+"px"}} src={searchResults.iconUrl} alt=""/>
-// </div>
+ 
