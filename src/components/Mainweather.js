@@ -17,8 +17,7 @@ function Mainweather() {
    const [updated,setUpdated]=useState(false);
    const [history,setHistory]=useState([]);
    const [historyUpdated,setHistoryUpdated]=useState(false);
-//    const listItems= history.map((item,index)=>   
-//         <span key={index}>{item.cityName}</span>)
+//   
    
 
 
@@ -93,7 +92,7 @@ function Mainweather() {
                             <br></br>
                             <br></br>
                             <div className="col-sm-8 mx-auto">
-                            <div className="card text-black" id="displaySearch">
+                            <div className="card text-black" id="displaySearch" style={{displ}}>
                             <div className="card-body">
                                 <div className="row row-content">
                                     <img  className="col-sm-4 mx-auto" style={{"width":100+"px"}} src={searchResults.iconUrl} alt=""/>
@@ -128,16 +127,16 @@ function Mainweather() {
                        
                        
                         
-                        
-                        {displayHistory()} 
-                        {history}
-                         
-                        {historyUpdated?
-                            history.map((d, idx)=>
-                            <li key={idx}>{d.cityName}</li>)
-                        :null
-                        }
-                        
+                                
+                                {displayHistory()} 
+                                {history}
+                                
+                                {historyUpdated ?
+                                    history.map((singleHistory,index )=>
+                                    <li key={singleHistory.id}>{singleHistory.cityName}</li>)
+                                :null
+                                }
+                                
                        
                     
                         </div>
