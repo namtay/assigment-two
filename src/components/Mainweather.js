@@ -17,7 +17,8 @@ function Mainweather() {
    const [updated,setUpdated]=useState(false);
    const [history,setHistory]=useState([]);
    const [historyUpdated,setHistoryUpdated]=useState(false);
-//   
+   const [show,setShow]=useState(false);
+
    
 
 
@@ -47,6 +48,7 @@ function Mainweather() {
                  }              
                  );           
                  setUpdated(true);
+                 setShow(!show);
                
             } )
            
@@ -64,9 +66,9 @@ function Mainweather() {
                     setUpdated(false);
                     array.push(newHistory);
                     setHistory(array);
-                    setHistoryUpdated(true);           
-                              
-                  
+                    setHistoryUpdated(true);      
+                    
+               
                 }     
                 
      }    
@@ -82,17 +84,18 @@ function Mainweather() {
                         <form  className="form-inline my-2 my-lg-0">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onChange={handleChange}/>
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={handleClick}>
-                        <a href="#displaySearch">Search</a>    
-                        </button>
-                        
+                            Search                           
+                        </button>                      
                         </form>
                         </div>
                     </div>
-                    <div  className="row row-content" >
+                    <br></br>
+                    <br></br>
+                    <div  className="row row-content"   style={{ display: show? "block" : "none" }}>
                             <br></br>
                             <br></br>
-                            <div className="col-sm-8 mx-auto">
-                            <div className="card text-black" id="displaySearch" style={{displ}}>
+                            <div className="col-sm-8 mx-auto">                           
+                            <div className="card text-black" id="displaySearch">
                             <div className="card-body">
                                 <div className="row row-content">
                                     <img  className="col-sm-4 mx-auto" style={{"width":100+"px"}} src={searchResults.iconUrl} alt=""/>
@@ -115,39 +118,28 @@ function Mainweather() {
                                                                     
                                 
                             </div>
-                    </div>
-
-
-                     <div className="row rowcontent">
-                      
+                    </div>                
+                    <div className="row rowcontent">                      
                         <div className="col-sm-6">
                         </div>
                         <div className="col-sm-6">
-                                  <h2>History</h2>
-                       
-                       
-                        
-                                
+                                  <h2>History</h2>          
+                                             
+                            
                                 {displayHistory()} 
-                                {history}
-                                
+                                {history}                                
                                 {historyUpdated ?
                                     history.map((singleHistory,index )=>
                                     <li key={singleHistory.id}>{singleHistory.cityName}</li>)
                                 :null
-                                }
-                                
-                       
-                    
-                        </div>
-                       
+                                }                             
+                                          
+                        </div>                       
                      </div>
                 </div>
                 </div>
-             </div>
-             
-        
-       </div>   
+             </div>          
+         </div>   
        </div>  
  
             
