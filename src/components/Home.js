@@ -55,7 +55,7 @@ function Home() {
         <div >
             <Navbar></Navbar>
             <div className=" container bg-info">
-                  <div className="row" style={{"marginBottom":300 +"px"}}>
+                  <div className="row" style={{"marginBottom":100 +"px"}}>
                     <div className="col-sm-4 mx-auto text-light align-items-center">
                             <h1>Weather Forecast</h1>
                             </div> 
@@ -66,7 +66,7 @@ function Home() {
                         <div className="col-sm-6 mx-auto">
                             <div className="card text-white bg-info">
                                 <div className="card-body">
-                                    <img style={{"width":200+"px"}} src={weather.iconUrl} alt="Clear"/>
+                                    <img style={{"width":100+"px"}} src={weather.iconUrl} alt="Clear"/>
                                     <h5>City: {weather.cityName}</h5>
                                     <h5>Region: {weather.region}</h5>
                                     <h5>Country: {weather.country}</h5>
