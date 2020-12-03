@@ -45,10 +45,10 @@ function Mainweather() {
                      dateTime: res.data.location.localtime,
                      id:res.data.current.last_updated_epoch
                      
-                 }              
-                 );           
+                });        
                  setUpdated(true);
                  setShow(!show);
+
                
             } )
            
@@ -57,22 +57,22 @@ function Mainweather() {
        }
               
     const displayHistory = () => {
-            if (updated === true){
+            if (updated){
                   const array = history.slice();
-                    
                    localStorage.setItem("storedWeather", JSON.stringify(searchResults));
-                    const newHistory =localStorage.getItem(JSON.parse('"storedWeather"'));
+                    const newHistory =JSON.parse(localStorage.getItem("storedWeather"));
                     console.log(newHistory);
                     setUpdated(false);
                     array.push(newHistory);
                     setHistory(array);
                     setHistoryUpdated(true);      
-                    
-               
                 }     
                 
      }    
  
+    const historyList = history.map(singleHistory => ( 
+        <li key={singleHistory.id}>{singleHistory.cityName}</li>
+    )) 
 
     return (
         <div>
@@ -127,13 +127,8 @@ function Mainweather() {
                                              
                             
                                 {displayHistory()} 
-                                {history}                                
-                                {historyUpdated ?
-                                    history.map((singleHistory,index )=>
-                                    <li key={singleHistory.id}>{singleHistory.cityName}</li>)
-                                :null
-                                }                             
-                                          
+                                {/* {history}                                 */}
+                                {historyUpdated ? historyList : null}                                                                 
                         </div>                       
                      </div>
                 </div>
