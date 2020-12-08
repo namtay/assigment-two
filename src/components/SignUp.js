@@ -4,6 +4,7 @@ import Button from "./Button";
 import Navbar from "./Navbar";
 import {Link} from "react-router-dom";
 
+import "./SignUp.css";
 
 
 function SignUp(props) {
@@ -23,12 +24,15 @@ function SignUp(props) {
         <div>
          <Navbar></Navbar>
 
-        <div className="container">  
+        <div className="container SignUpBackground">  
+        <br></br>
+        <br></br>
+        <br></br>
             
         <div className="row">
-            <div className="col-12 col-md-6 mx-auto">
+            <div className="col-12 col-md-6 mx-auto ">
                 <form>
-                        <h3 style={{color:"#212121",textAlign:"center"}}>Create Account</h3>
+                        <h3 style={{color:"white",textAlign:"center"}}>Create Account</h3>
                         <br/>
                         <SignUpInner onChange={handleChange} value={value.firstName} name="FirstName" type="text" labelname="First name"></SignUpInner>
                         <SignUpInner onChange={handleChange} value={value.LastName} name="LastName" type="text" labelname="Last name"></SignUpInner>
@@ -37,11 +41,18 @@ function SignUp(props) {
                         <SignUpInner onChange={handleChange} value={value.confirmPassword} name="Confirm Password" type="password" labelname="ConfirmPassword"></SignUpInner>
                         <div className="col-sm-2 ml-auto">
                             <Link to="/signIn">
-                            <Button  title="SignUp" style={{backgroundColor: "#448AFF"}}></Button> 
+                            <Button  title="SignUp" style={{backgroundColor: "#448AFF","border":10+"px"}}></Button> 
                             </Link>                    
                         </div>               
-                  </form >         
-        
+                  </form >  
+                  <br></br> 
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>      
+                  <br></br>
+                  <br></br>
+                  <br></br>
             </div>
         </div>     
              

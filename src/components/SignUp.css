@@ -1,0 +1,13 @@
+.SignUpBackground {
+  background-image: url(../images/pexels-pixabay_signup_blur.jpg);
+  height: 100%;
+
+  /* -webkit-filter: blur(8px); */
+  /* z-index: -1; */
+}
+
+.textStyle {
+  position: absolute;
+  /* transform: translate(-50%, -50%); */
+  z-index: 1;
+}

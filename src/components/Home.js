@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import Navbar from "./Navbar";
 import axios from "axios";
+import "./Home.css"
 
 function Home() {
     const initialValue=[{}];
@@ -54,37 +55,41 @@ function Home() {
     return (
         <div >
             <Navbar></Navbar>
-            <div className=" container bg-info">
-                  <div className="row" style={{"marginBottom":300 +"px"}}>
-                    <div className="col-sm-4 mx-auto text-light align-items-center">
-                            <h1>Weather Forecast</h1>
-                            </div> 
-                    </div>
+            <div className="">
+            <div className="container backgroundImage2">
+            <div className="row" style={{"marginBottom":200 +"px"}}>
+              <div className="col-sm-6 mx-auto text-light align-items-center" style={{"marginTop":50+"px"}}>
+                      <h1>Current weather condition</h1>
+                      </div> 
+              </div>
+                       
+              
+          <div className="row">
+                  <div className="col-sm-5 mx-auto">
+                      <div className="card text-black" style={{"marginBottom":40+"px"}}>
+                          <div className="card-body align-items-center">
+                             <div className="row">
+                             <div className="col-md-6  mx-auto">
+                             <img  style={{"width":100+"px"}} src={weather.iconUrl} alt="Clear"/>
+                             <span style={{"fontSize":20+"px","fontWeight":500+"px"}}>{weather.temperature} &deg;C</span>
+                             <h5>{weather.description}</h5>                                                           
+                             <h5>{weather.cityName},{weather.country}</h5>                    
                              
-                    
-                <div className="row">
-                        <div className="col-sm-6 mx-auto">
-                            <div className="card text-white bg-info">
-                                <div className="card-body">
-                                    <img style={{"width":200+"px"}} src={weather.iconUrl} alt="Clear"/>
-                                    <h5>City: {weather.cityName}</h5>
-                                    <h5>Region: {weather.region}</h5>
-                                    <h5>Country: {weather.country}</h5>
-                                    <h5> Description: {weather.description}</h5>
-                                    <h5>Temperature: {weather.temperature}</h5>
-                                    <h5>Date and Time: {weather.dateTime}</h5>
-                                </div>
-                            </div>
-                        </div>
-                </div>
+                             <h5>{weather.dateTime}</h5>
+                          </div>                          
+                          </div>                       
+                                                            
+                          </div>
+                      </div>
+                  </div>
+          </div>               
+         
+      </div>        
 
-                
-               
+     
+      
             </div>
            
-
-           
-            
         </div>
     )
 }

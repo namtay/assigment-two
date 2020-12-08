@@ -6,10 +6,20 @@
 .date {
   font-size: 20px;
   font-weight: 400;
-  font-style: italic;
+  /* font-style: italic; */
 }
 
 .temperature {
   font-size: 300 px;
   font-weight: 900;
+}
+
+.backgroundImage {
+  background-image: url("../images/pexels-jonathan-goerke.jpg");
+  height: 100%;
+}
+
+.description {
+  font-size: 20px;
+  font-weight: 400;
 }
